@@ -273,6 +273,73 @@ namespace Lex {
 				LT::Entry entryLT = WriteEntry(entryLT, LEX_LITERAL, IT::IsId(idtable, word[i]), line);
 				LT::Add(lextable, entryLT);
 			}
+			else if (FST::execute(FST::FST(word[i], FST_INTLITBIN))) {
+				char* numBuf = new char;
+				int j = 0;
+				for (int k = 0; k < strlen(word[i]); k++, j++) {
+					numBuf[j] = word[i][k];
+				}
+				numBuf[j + 1] = '\0';
+				int value = strtol(numBuf + 2, NULL, 2);
+
+				for (int k = 0; k < idtable.size; k++) {
+					if (idtable.table[k].value.vint == value && idtable.table[k].idtype == IT::L && idtable.table[k].iddatatype == IT::INT) {
+						LT::Entry entryLT = WriteEntry(entryLT, LEX_LITERAL, k, line);
+						LT::Add(lextable, entryLT);
+						findSameID = true;
+						break;
+					}
+				}
+
+				if (findSameID) continue;
+				entryIT.idtype = IT::L;
+				entryIT.iddatatype = IT::INT;
+				entryIT.value.vint = value;
+				entryIT.idxFirstLE = indexLex;
+				_itoa_s(literalCounter++, charclit, sizeof(char) * 10, 10);
+				strcpy(bufL, L);
+				word[i] = strcat(bufL, charclit);
+				strcpy(entryIT.id, word[i]);
+				IT::Add(idtable, entryIT);
+				entryIT = {};
+
+				LT::Entry entryLT = WriteEntry(entryLT, LEX_LITERAL, IT::IsId(idtable, word[i]), line);
+				LT::Add(lextable, entryLT);
+			}
+			else if (FST::execute(FST::FST(word[i], FST_INTLITOCT))) {
+				char* numBuf = new char;
+				int j = 0;
+				for (int k = 0; k < strlen(word[i]); k++, j++) {
+					numBuf[j] = word[i][k];
+				}
+				numBuf[j + 1] = '\0';
+				int value = strtol(numBuf + 2, NULL, 8);
+
+				for (int k = 0; k < idtable.size; k++) {
+					if (idtable.table[k].value.vint == value && idtable.table[k].idtype == IT::L && idtable.table[k].iddatatype == IT::INT) {
+						LT::Entry entryLT = WriteEntry(entryLT, LEX_LITERAL, k, line);
+						LT::Add(lextable, entryLT);
+						findSameID = true;
+						break;
+					}
+				}
+
+				if (findSameID) continue;
+				entryIT.idtype = IT::L;
+				entryIT.iddatatype = IT::INT;
+				entryIT.value.vint = value;
+				entryIT.idxFirstLE = indexLex;
+				_itoa_s(literalCounter++, charclit, sizeof(char) * 10, 10);
+				strcpy(bufL, L);
+				word[i] = strcat(bufL, charclit);
+				strcpy(entryIT.id, word[i]);
+				IT::Add(idtable, entryIT);
+				entryIT = {};
+
+				LT::Entry entryLT = WriteEntry(entryLT, LEX_LITERAL, IT::IsId(idtable, word[i]), line);
+				LT::Add(lextable, entryLT);
+			}
+
 			else if (FST::execute(FST::FST(word[i], FST_STRLIT))) {
 				int length = strlen(word[i]);
 				for (int k = 0; k < length; k++)
@@ -383,7 +450,7 @@ namespace Lex {
 					entryLT.priority = 2;
 					entryLT.op = LT::operations::OMINUS;
 					break;
-				case DIRSLASH: 
+				case DIRSLASH:
 					entryLT.priority = 3;
 					entryLT.op = LT::operations::ODIV;
 					break;

@@ -33,6 +33,11 @@ namespace Gen
 		//TO DO
 		// I REMOVED LIBS SO I NEED TO  INCLUDE SHIT
 
+		out << "EXTRN slen: proc\n";
+		out << "EXTRN scpy: proc\n";
+		out << "EXTRN mpow: proc\n";
+		out << "EXTRN mrand: proc\n";
+
 		out << "\n.stack 4096\n\n";
 	}
 

@@ -146,6 +146,28 @@
 	\
 	FST::NODE()
 
+#define FST_INTLITBIN 4,	\
+	FST::NODE(1, FST::RELATION('0', 1)),\
+	FST::NODE(1, FST::RELATION('b', 2)),\
+	FST::NODE(4,	\
+	FST::RELATION('1', 2),FST::RELATION('0', 2), \
+	\
+	FST::RELATION('1', 3),FST::RELATION('0', 3)), \
+	\
+	FST::NODE()
+
+#define FST_INTLITOCT 4,	\
+	FST::NODE(1, FST::RELATION('0', 1)),\
+	FST::NODE(1, FST::RELATION('o', 2)),\
+	FST::NODE(14,	\
+	FST::RELATION('1', 2), FST::RELATION('2', 2), FST::RELATION('3', 2), FST::RELATION('4', 2), FST::RELATION('5', 2), FST::RELATION('6', 2),\
+	FST::RELATION('7', 2), \
+	\
+	FST::RELATION('1', 3), FST::RELATION('2', 3), FST::RELATION('3', 3), FST::RELATION('4', 3), FST::RELATION('5', 3), FST::RELATION('6', 3),\
+	FST::RELATION('7', 3)),\
+	\
+	FST::NODE()
+
 #define FST_TRUE 5,	\
 	FST::NODE(1, FST::RELATION('t', 1)),\
 	FST::NODE(1, FST::RELATION('r', 2)),\
@@ -288,7 +310,6 @@
 	FST::NODE(1, FST::RELATION('p', 3)),\
 	FST::NODE(1, FST::RELATION('y', 4)),\
 	FST::NODE()
-
 
 #define FST_MATH 15,	\
 	FST::NODE(1, FST::RELATION('$', 1)),\
