@@ -1,0 +1,22 @@
+int function count2(int i) 
+{
+   let int mul = i * 2;
+   ret mul;   
+}
+
+int function count1(int i)
+{
+   repeat (i < 99999999) {
+      writeln i;
+      i = count2(i);
+   }
+   ret i;   
+}
+
+main
+{
+   let int res = count1(3);
+   write 'Результат = ';
+   writeln res;
+}
+#123123

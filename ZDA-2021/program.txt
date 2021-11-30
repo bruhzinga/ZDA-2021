@@ -1,0 +1,14 @@
+$include[math]
+$include[string]
+
+main
+{
+   let int i = 0xff;
+   i = mpow(i, 3);
+   writeln i;
+   let int r = mrand(1, 5);
+   writeln r;
+   let string str = '1234567h#jknf';
+   let int len = slen(str);
+   write len;
+}

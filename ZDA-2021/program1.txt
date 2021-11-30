@@ -1,0 +1,25 @@
+int function f(int i) #Факториал
+{
+   let int result;
+   result = 1;
+   repeat(i > 0) {
+      result = result * i;
+      i = i - 1;
+   }
+   ret result;
+}
+
+main
+{
+   let int fact = f(6);
+   write 'Факториал 6 = ';
+   writeln fact;
+   let int size = slen('213');
+   write 'Длина строки = '
+   writeln size;
+   let string s1 = '123';
+   let string s2 = '456';
+   scpy(s1, s2);
+   write s1;
+}
+#123123

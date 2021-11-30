@@ -1,0 +1,26 @@
+int function fac(int i) 
+{
+   where (i ~ 0) {
+      ret 1;
+   }
+   else {
+      let int z = i - 1;
+      let int res = i * fac(z);
+      ret res;
+   }   
+}
+
+main
+{
+   let int res = fac(0x6);
+   write 'Результат = ';
+   writeln res;
+   writeln 0xfff;
+   writeln 0x14de;
+   writeln 0x2ea;
+   let string s1 = '123';
+   let string s2 = '456';
+   s1 = scpy(s1, s2);
+   writeln s1;
+}
+#123123
