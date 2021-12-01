@@ -18,7 +18,7 @@ EXTRN mrand: proc
 .stack 4096
 
 .const
-	L1 SDWORD 83
+	L1 SDWORD 15
 	L2 SDWORD 3
 	L3 SDWORD 1
 	L4 SDWORD 5

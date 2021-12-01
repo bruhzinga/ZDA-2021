@@ -3,7 +3,7 @@ $include[string]
 
 main
 {
-   let int i = 0o123	;
+   let int i = 15	;
    i = mpow(i, 3);
    writeln i;
    let int r = mrand(1, 5);
