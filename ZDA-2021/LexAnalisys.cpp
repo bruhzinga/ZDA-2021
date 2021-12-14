@@ -205,7 +205,20 @@ namespace Lex {
 				LT::Add(lextable, entryLT);
 			}
 			else if (FST::execute(FST::FST(word[i], FST_INTLIT))) {
-				int value = atoi((char*)word[i]);
+				char sign = word[i][0];
+				int value = 0;
+				if (sign != 'N')
+				{
+					value = atoi(word[i]);
+				}
+				else
+				{
+					char valueWithoutSign[ID_MAXSIZE];
+					strcpy(valueWithoutSign, &word[i][1]);
+					value = atoi(valueWithoutSign);
+					value = value * -1;
+				}
+
 				if (value > 127 || value < -128)
 				{
 					throw ERROR_THROW_IN(315, line, position);
@@ -235,13 +248,19 @@ namespace Lex {
 				LT::Add(lextable, entryLT);
 			}
 			else if (FST::execute(FST::FST(word[i], FST_INTLITHEX))) {
+				int value = 0;
 				char* numBuf = new char;
 				int j = 0;
 				for (int k = 0; k < strlen(word[i]); k++, j++) {
 					numBuf[j] = word[i][k];
 				}
 				numBuf[j + 1] = '\0';
-				int value = strtol(numBuf, NULL, 16);
+				if (numBuf[2] == 'N')
+				{
+					value = -strtol(numBuf + 3, NULL, 16);
+				}
+				else value = strtol(numBuf + 2, NULL, 16);
+
 				if (value > 127 || value < -128)
 				{
 					throw ERROR_THROW_IN(315, line, position);
@@ -272,13 +291,18 @@ namespace Lex {
 				LT::Add(lextable, entryLT);
 			}
 			else if (FST::execute(FST::FST(word[i], FST_INTLITBIN))) {
+				int value = 0;
 				char* numBuf = new char;
 				int j = 0;
 				for (int k = 0; k < strlen(word[i]); k++, j++) {
 					numBuf[j] = word[i][k];
 				}
 				numBuf[j + 1] = '\0';
-				int value = strtol(numBuf + 2, NULL, 2);
+				if (numBuf[2] == 'N')
+				{
+					value = -strtol(numBuf + 3, NULL, 2);
+				}
+				else value = strtol(numBuf + 2, NULL, 2);
 				if (value > 127 || value < -128)
 				{
 					throw ERROR_THROW_IN(315, line, position);

@@ -1,0 +1,7 @@
+main
+{
+let int i =N128;
+let int b = i-1;
+write b;
+
+}
