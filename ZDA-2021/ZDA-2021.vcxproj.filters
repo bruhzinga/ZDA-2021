@@ -42,7 +42,7 @@
     <ClCompile Include="Log.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="LPLab14.cpp">
+    <ClCompile Include="ZDA2021.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="LT.cpp">

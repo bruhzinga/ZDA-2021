@@ -149,7 +149,7 @@
     <ClCompile Include="IT.cpp" />
     <ClCompile Include="LexAnalisys.cpp" />
     <ClCompile Include="Log.cpp" />
-    <ClCompile Include="LPLab14.cpp" />
+    <ClCompile Include="ZDA2021.cpp" />
     <ClCompile Include="LT.cpp" />
     <ClCompile Include="MFST.cpp" />
     <ClCompile Include="Out.cpp" />
