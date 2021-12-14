@@ -1,4 +1,5 @@
-#include <iostream>
+#
+<iostream>
 #include <Windows.h>
 #pragma warning(disable: 4996)
 
@@ -8,6 +9,12 @@ extern "C" {
 	}
 
 	void OutputInt(int a) {
+		if (a > 127 || a < -128)
+		{
+			std::cout << "Int out of range";
+			throw;
+		}
+
 		std::cout << a;
 	}
 
@@ -31,23 +38,30 @@ extern "C" {
 		std::cout << std::endl;
 	}
 
-	int slen(char* ptr) {
-		return strlen(ptr);
-	}
-
-	char* scpy(char* s1, char* s2) {
-		if (!s1 || !s2) {
-			std::cout << "ERROR: null string" << std::endl;
-			ExitProcess(0);
-		}
-		return s2;
-	}
-
 	int mpow(int num, int exp) {
 		return pow(num, exp);
 	}
 
 	int mrand(int min, int max) {
 		return rand() % (max - min) + min;
+	}
+	int sum(int a, int b)
+	{
+		if ((a + b) > 127 || (a + b) < -128)
+		{
+			std::cout << "Int out of range";
+			throw;
+		}
+		return a + b;
+	}
+
+	int multip(int a, int b)
+	{
+		if ((a * b) > 127 || (a * b) < -128)
+		{
+			std::cout << "Int out of range";
+			throw;
+		}
+		return a * b;
 	}
 }

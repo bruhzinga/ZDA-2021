@@ -18,7 +18,7 @@
 using namespace std;
 
 namespace Lex {
-	LEX LexAnaliz(Log::LOG log, In::IN in, std::stack<std::string>& libs) {
+	LEX LexAnaliz(Log::LOG log, In::IN in) {
 		LEX lex;
 		LT::LexTable lextable = LT::Create(LT_MAXSIZE);
 		IT::IdTable idtable = IT::Create(TI_MAXSIZE);
@@ -44,9 +44,6 @@ namespace Lex {
 		bool findProc = false;
 		int is_cycle = 0;
 
-		bool findMath = false;
-		bool findString = false;
-
 		std::stack<std::string> functions;
 		char* bufprefix = new char[10]{ "" };
 		char* L = new char[2]{ "L" };
@@ -61,15 +58,8 @@ namespace Lex {
 		for (int i = 0; word[i] != NULL; i++, indexLex++) {
 			bool findSameID = false;
 			position += strlen(word[i]);
-			if (FST::execute(FST::FST(word[i], FST_MATH))) {
-				libs.push("math");
-				findMath = true;
-			}
-			else if (FST::execute(FST::FST(word[i], FST_STRINGLIB))) {
-				libs.push("string");
-				findString = true;
-			}
-			else if (FST::execute(FST::FST(word[i], FST_LET))) {
+
+			if (FST::execute(FST::FST(word[i], FST_LET))) {
 				LT::Entry entryLT = WriteEntry(entryLT, LEX_LET, LT_TI_NULLIDX, line);
 				LT::Add(lextable, entryLT);
 				findDeclaration = true;
@@ -175,7 +165,7 @@ namespace Lex {
 				LT::Entry entryLT = WriteEntry(entryLT, LEX_LITERAL, IT::IsId(idtable, word[i]), line);
 				LT::Add(lextable, entryLT);
 			}
-			else if (FST::execute(FST::FST(word[i], FST_SLEN)) && findString) {
+			else if (FST::execute(FST::FST(word[i], FST_SLEN))) {
 				if (int idx = IT::IsId(idtable, word[i]) == TI_NULLIDX) {
 					entryIT.idtype = IT::F;
 					entryIT.iddatatype = IT::INT;
@@ -188,7 +178,7 @@ namespace Lex {
 				LT::Entry entryLT = WriteEntry(entryLT, LEX_ID, IT::IsId(idtable, word[i]), line);
 				LT::Add(lextable, entryLT);
 			}
-			else if (FST::execute(FST::FST(word[i], FST_SCPY)) && findString) {
+			else if (FST::execute(FST::FST(word[i], FST_SCPY))) {
 				if (int idx = IT::IsId(idtable, word[i]) == TI_NULLIDX) {
 					entryIT.idtype = IT::F;
 					entryIT.iddatatype = IT::STR;
@@ -201,7 +191,7 @@ namespace Lex {
 				LT::Entry entryLT = WriteEntry(entryLT, LEX_ID, IT::IsId(idtable, word[i]), line);
 				LT::Add(lextable, entryLT);
 			}
-			else if ((FST::execute(FST::FST(word[i], FST_POW)) || FST::execute(FST::FST(word[i], FST_RAND))) && findMath) {
+			else if ((FST::execute(FST::FST(word[i], FST_POW)) || FST::execute(FST::FST(word[i], FST_RAND)))) {
 				if (int idx = IT::IsId(idtable, word[i]) == TI_NULLIDX) {
 					entryIT.idtype = IT::F;
 					entryIT.iddatatype = IT::INT;
@@ -216,6 +206,10 @@ namespace Lex {
 			}
 			else if (FST::execute(FST::FST(word[i], FST_INTLIT))) {
 				int value = atoi((char*)word[i]);
+				if (value > 127 || value < -128)
+				{
+					throw ERROR_THROW_IN(315, line, position);
+				}
 				for (int k = 0; k < idtable.size; k++) {
 					if (idtable.table[k].value.vint == value && idtable.table[k].idtype == IT::L && idtable.table[k].iddatatype == IT::INT) {
 						LT::Entry entryLT = WriteEntry(entryLT, LEX_LITERAL, k, line);
@@ -248,6 +242,10 @@ namespace Lex {
 				}
 				numBuf[j + 1] = '\0';
 				int value = strtol(numBuf, NULL, 16);
+				if (value > 127 || value < -128)
+				{
+					throw ERROR_THROW_IN(315, line, position);
+				}
 
 				for (int k = 0; k < idtable.size; k++) {
 					if (idtable.table[k].value.vint == value && idtable.table[k].idtype == IT::L && idtable.table[k].iddatatype == IT::INT) {
@@ -281,6 +279,10 @@ namespace Lex {
 				}
 				numBuf[j + 1] = '\0';
 				int value = strtol(numBuf + 2, NULL, 2);
+				if (value > 127 || value < -128)
+				{
+					throw ERROR_THROW_IN(315, line, position);
+				}
 
 				for (int k = 0; k < idtable.size; k++) {
 					if (idtable.table[k].value.vint == value && idtable.table[k].idtype == IT::L && idtable.table[k].iddatatype == IT::INT) {
@@ -314,6 +316,10 @@ namespace Lex {
 				}
 				numBuf[j + 1] = '\0';
 				int value = strtol(numBuf + 2, NULL, 8);
+				if (value > 127 || value < -128)
+				{
+					throw ERROR_THROW_IN(315, line, position);
+				}
 
 				for (int k = 0; k < idtable.size; k++) {
 					if (idtable.table[k].value.vint == value && idtable.table[k].idtype == IT::L && idtable.table[k].iddatatype == IT::INT) {

@@ -29,27 +29,29 @@ namespace Error {
 		ERROR_ENTRY_NODEF(206), ERROR_ENTRY_NODEF(207), ERROR_ENTRY_NODEF(208), ERROR_ENTRY_NODEF(209),
 		ERROR_ENTRY_NODEF10(210), ERROR_ENTRY_NODEF10(220), ERROR_ENTRY_NODEF10(230), ERROR_ENTRY_NODEF10(240), ERROR_ENTRY_NODEF10(250),
 		ERROR_ENTRY_NODEF10(260), ERROR_ENTRY_NODEF10(270), ERROR_ENTRY_NODEF10(280), ERROR_ENTRY_NODEF10(290),
-		ERROR_ENTRY(300, "[ SEMANTIC ] Èìååòñÿ íå çàêğûòûé ñòğîêîâûé ëèòåğàë"),							// -	
-		ERROR_ENTRY(301, "[ SEMANTIC ] Èìååòñÿ áîëåå îäíîé òî÷êè âõîäà â main"),						// +	
-		ERROR_ENTRY(302, "[ SEMANTIC ] Íå èìååòñÿ òî÷êè âõîäà â main"),									// +	
-		ERROR_ENTRY(303, "[ SEMANTIC ] Ïğåâûøåí ğàçìåğ ñòğîêîâîãî ëèòåğàëà"),							// -	
-		ERROR_ENTRY(304, "[ SEMANTIC ] Îáúÿâëåíèå ïåğåìåííîé áåç êëş÷åâîãî ñëîâà let"),					// -	
-		ERROR_ENTRY(305, "[ SEMANTIC ] Íåîáúÿâëåííûé èäåíòèôèêàòîğ"),									// -	
-		ERROR_ENTRY(306, "[ SEMANTIC ] Îáúâëåíèå ïåğåìåííîé áåç óêàçàíèÿ òèïà"),						// -											
-		ERROR_ENTRY(307, "[ SEMANTIC ] Ïîïûòêà ğåàëèçîâàòü ñóùåñòâóşùóş ôóíêöèş"),						// +											
-		ERROR_ENTRY(308, "[ SEMANTIC ] Îáúÿâëåíèå ôóíêöèè áåç óêàçàíèÿ òèïà"),							// -										
-		ERROR_ENTRY(309, "[ SEMANTIC ] Íåñîâïàäåíèå òèïîâ ïåğåäàâàåìûõ ïàğàìåòğîâ ôóíêöèè"),			// -					
-		ERROR_ENTRY(310, "[ SEMANTIC ] Íåñîîòâåòñòâèå àğèôìåòè÷åñêèõ îïåğàòîğîâ"),						// -											
-		ERROR_ENTRY(311, "[ SEMANTIC ] Íåâîçìîæíî äåëåíèå íà íîëü"),									// -								
-		ERROR_ENTRY(312, "[ SEMANTIC ] Íåñîîòâåòñâèå òèïîâ äàííûõ"),									// +							
-		ERROR_ENTRY(313, "[ SEMANTIC ] Íåñîîòâåòñâèå îòêğûòûõ è çàêğûòûõ ñêîáîê â âûğàæåíèè"),			// -								
-		ERROR_ENTRY(314, "[ SEMANTIC ] Ôóíêöèÿ âîçâğàùàåò íåâåğíûé òèï äàííûõ"),						// +								
+		ERROR_ENTRY(300, "[ SEMANTIC ] Èìååòñÿ íå çàêğûòûé ñòğîêîâûé ëèòåğàë"),							// -
+		ERROR_ENTRY(301, "[ SEMANTIC ] Èìååòñÿ áîëåå îäíîé òî÷êè âõîäà â main"),						// +
+		ERROR_ENTRY(302, "[ SEMANTIC ] Íå èìååòñÿ òî÷êè âõîäà â main"),									// +
+		ERROR_ENTRY(303, "[ SEMANTIC ] Ïğåâûøåí ğàçìåğ ñòğîêîâîãî ëèòåğàëà"),							// -
+		ERROR_ENTRY(304, "[ SEMANTIC ] Îáúÿâëåíèå ïåğåìåííîé áåç êëş÷åâîãî ñëîâà let"),					// -
+		ERROR_ENTRY(305, "[ SEMANTIC ] Íåîáúÿâëåííûé èäåíòèôèêàòîğ"),									// -
+		ERROR_ENTRY(306, "[ SEMANTIC ] Îáúâëåíèå ïåğåìåííîé áåç óêàçàíèÿ òèïà"),						// -
+		ERROR_ENTRY(307, "[ SEMANTIC ] Ïîïûòêà ğåàëèçîâàòü ñóùåñòâóşùóş ôóíêöèş"),						// +
+		ERROR_ENTRY(308, "[ SEMANTIC ] Îáúÿâëåíèå ôóíêöèè áåç óêàçàíèÿ òèïà"),							// -
+		ERROR_ENTRY(309, "[ SEMANTIC ] Íåñîâïàäåíèå òèïîâ ïåğåäàâàåìûõ ïàğàìåòğîâ ôóíêöèè"),			// -
+		ERROR_ENTRY(310, "[ SEMANTIC ] Íåñîîòâåòñòâèå àğèôìåòè÷åñêèõ îïåğàòîğîâ"),						// -
+		ERROR_ENTRY(311, "[ SEMANTIC ] Íåâîçìîæíî äåëåíèå íà íîëü"),									// -
+		ERROR_ENTRY(312, "[ SEMANTIC ] Íåñîîòâåòñâèå òèïîâ äàííûõ"),									// +
+		ERROR_ENTRY(313, "[ SEMANTIC ] Íåñîîòâåòñâèå îòêğûòûõ è çàêğûòûõ ñêîáîê â âûğàæåíèè"),			// -
+		ERROR_ENTRY(314, "[ SEMANTIC ] Ôóíêöèÿ âîçâğàùàåò íåâåğíûé òèï äàííûõ"),						// +
+		ERROR_ENTRY(315, "[ SEMANTIC ] Int out of range"),
 		ERROR_ENTRY_NODEF100(700), ERROR_ENTRY_NODEF100(800), ERROR_ENTRY_NODEF100(900)
 	};
 	ERROR geterror(int id) {
 		if (id > 0 && id < ERROR_MAX_ENTRY) {
 			return errors[id];
-		} else {
+		}
+		else {
 			return errors[0];
 		}
 	}

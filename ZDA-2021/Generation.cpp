@@ -4,7 +4,7 @@ using namespace std;
 
 namespace Gen
 {
-	Generator::Generator(LT::LexTable plexT, IT::IdTable pidT, std::stack<std::string> libs)
+	Generator::Generator(LT::LexTable plexT, IT::IdTable pidT)
 	{
 		lexT = plexT;
 		idT = pidT;
@@ -30,11 +30,11 @@ namespace Gen
 		out << "EXTRN OutputStr: proc\n";
 		out << "EXTRN OutputIntLn: proc\n";
 		out << "EXTRN OutputStrLn: proc\n";
+		out << "EXTRN sum: proc\n";
+		out << "EXTRN multip: proc\n";
 		//TO DO
 		// I REMOVED LIBS SO I NEED TO  INCLUDE SHIT
 
-		out << "EXTRN slen: proc\n";
-		out << "EXTRN scpy: proc\n";
 		out << "EXTRN mpow: proc\n";
 		out << "EXTRN mrand: proc\n";
 
@@ -164,12 +164,12 @@ namespace Gen
 					case LEX_OPERATOR:
 						switch (lexT.table[i].op) {
 						case LT::OMUL:
-							out << "\tpop eax\n\tpop ebx\n";
-							out << "\tmul ebx\n\tpush eax\n";
+							/*	out << "\tpop eax\n\tpop ebx\n";*/
+							out << "\t call multip\n\tpush eax\n";
 							break;
 						case LT::OPLUS:
-							out << "\tpop eax\n\tpop ebx\n";
-							out << "\tadd eax, ebx\n\tpush eax\n";
+							/*out << "\tpop eax\n\tpop ebx\n";*/
+							out << "\tcall sum\n\tpush eax\n";
 							break;
 						case LT::OMINUS:
 							out << "\tpop ebx\n\tpop eax\n";

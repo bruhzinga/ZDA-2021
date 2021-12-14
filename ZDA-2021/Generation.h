@@ -11,7 +11,7 @@ namespace Gen {
 		IT::IdTable idT;
 		std::ofstream out;
 
-		Generator(LT::LexTable plexT, IT::IdTable pidT, std::stack<std::string> libs);
+		Generator(LT::LexTable plexT, IT::IdTable pidT);
 
 		void Head();
 		void Const();

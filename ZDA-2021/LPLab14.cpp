@@ -18,14 +18,13 @@ int wmain(int argc, wchar_t* argv[]) {
 	Log::LOG log = Log::INITLOG;
 
 	try {
-		std::stack<std::string> libs;
 		Parm::PARM parm = Parm::getparm(argc, argv);
 		log = Log::getlog(parm.log);
 		Log::WriteLog(log);
 		Log::WriteParm(log, parm);
 		In::IN in = In::getin(parm);
 		Log::WriteIn(log, in);
-		Lex::LEX lex = Lex::LexAnaliz(log, in, libs);
+		Lex::LEX lex = Lex::LexAnaliz(log, in);
 		MFST::check_syntax(lex, log, *log.stream);
 		if (parm.rules)
 			MFST::check_syntax(lex, log, std::cout);
@@ -46,7 +45,7 @@ int wmain(int argc, wchar_t* argv[]) {
 		if (parm.lex)
 			LT::ShowTable(lex.lextable, std::cout);
 
-		Gen::Generator Gener(lex.lextable, lex.idtable, libs);
+		Gen::Generator Gener(lex.lextable, lex.idtable);
 		Log::Close(log);
 	}
 	catch (Error::ERROR e) {
