@@ -133,7 +133,7 @@ namespace MFST {
 
 	bool Mfst::start(std::ostream& stream_out) {
 		MFST_TRACE_START
-		bool rc = false;
+			bool rc = false;
 		RC_STEP rc_step = SURPRISE;
 		char buf[MFST_DIAGN_MAXSIZE]{};
 		rc_step = step(stream_out);
@@ -193,7 +193,7 @@ namespace MFST {
 		if (n < MFST_DIAGN_NUMBER && (lpos = diagnosis[n].lenta_position) >= 0) {
 			errid = greibach.getRule(diagnosis[n].nrule).iderror;
 			Error::ERROR err = Error::geterror(errid);
-			sprintf_s(buf, MFST_DIAGN_MAXSIZE, "%d: строка %d,	%s", err.id, lex.table[lpos].line, err.message);
+			sprintf_s(buf, MFST_DIAGN_MAXSIZE, "%d: Line %d,	%s", err.id, lex.table[lpos].line, err.message);
 			rc = buf;
 		}
 

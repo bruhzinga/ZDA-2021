@@ -18,29 +18,67 @@ EXTRN mrand: proc
 .stack 4096
 
 .const
-	L1 SDWORD 25
-	L2 SDWORD 46
-	L3 SDWORD 100
+	L1 SDWORD 2
+	L2 SDWORD 100
+	L3 SDWORD 3
+	L4 BYTE "Результат = ", 0
 
 .data
 	buffer BYTE 256 dup(0)
-	maini SDWORD 0
-	mainb SDWORD 0
+	count2mul SDWORD 0
+	mainres SDWORD 0
 
 .code
 
-main PROC
+count2 PROC count2i : SDWORD
+	push count2i
 	push L1
-	pop maini
-	push L2
-	push L3
-	pop ebx
-	pop eax
-	sub eax, ebx
+	 call multip
 	push eax
-	pop mainb
-	push mainb
-	call OutputInt
+	pop count2mul
+	push count2mul
+	jmp local0
+local0:
+	pop eax
+	ret
+count2 ENDP
+
+count1 PROC count1i : SDWORD
+	mov eax, count1i
+	cmp eax, L2
+	jl cycle0
+	jmp cyclenext0
+cycle0:
+	push count1i
+	call OutputIntLn
+	push count1i
+	pop edx
+	push count1i
+	call count2
+	push eax
+	pop count1i
+	mov eax, count1i
+	cmp eax, L2
+	jl cycle0
+cyclenext0:
+	push count1i
+	jmp local1
+local1:
+	pop eax
+	ret
+count1 ENDP
+
+main PROC
+	push L3
+	pop edx
+	push L3
+	call count1
+	push eax
+	pop mainres
+	push offset L4
+	call OutputStr
+	push mainres
+	call OutputIntLn
 	call ExitProcess
 main ENDP
 end main

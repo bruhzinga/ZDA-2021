@@ -1,9 +1,22 @@
+int function count2(int i) 
+{
+   let int mul = i * 2;
+   ret mul;   
+}
 
+int function count1(int i)
+{
+   repeat (i < 100) {
+      writeln i;
+      i = count2(i);
+   }
+   ret i;   
+}
 
 main
 {
-let int i =25;;
-let int b
-b = 123 ;
-write b;
+   let int res = count1(3);
+   write 'Результат = ';
+   writeln res;
 }
+#123123
