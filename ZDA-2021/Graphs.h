@@ -279,20 +279,6 @@
 	FST::NODE(1, FST::RELATION('=', 1)),\
 	FST::NODE()
 
-#define FST_SLEN 5,	\
-	FST::NODE(1, FST::RELATION('s', 1)),\
-	FST::NODE(1, FST::RELATION('l', 2)),\
-	FST::NODE(1, FST::RELATION('e', 3)),\
-	FST::NODE(1, FST::RELATION('n', 4)),\
-	FST::NODE()
-
-#define FST_SCPY 5,	\
-	FST::NODE(1, FST::RELATION('s', 1)),\
-	FST::NODE(1, FST::RELATION('c', 2)),\
-	FST::NODE(1, FST::RELATION('p', 3)),\
-	FST::NODE(1, FST::RELATION('y', 4)),\
-	FST::NODE()
-
 #define FST_POW 5,	\
 	FST::NODE(1, FST::RELATION('m', 1)),\
 	FST::NODE(1, FST::RELATION('p', 2)),\
