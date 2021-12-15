@@ -165,32 +165,7 @@ namespace Lex {
 				LT::Entry entryLT = WriteEntry(entryLT, LEX_LITERAL, IT::IsId(idtable, word[i]), line);
 				LT::Add(lextable, entryLT);
 			}
-			else if (FST::execute(FST::FST(word[i], FST_SLEN))) {
-				if (int idx = IT::IsId(idtable, word[i]) == TI_NULLIDX) {
-					entryIT.idtype = IT::F;
-					entryIT.iddatatype = IT::INT;
-					entryIT.idxFirstLE = indexLex;
-					strcpy(entryIT.id, word[i]);
-					IT::Add(idtable, entryIT);
-					entryIT = {};
-				}
 
-				LT::Entry entryLT = WriteEntry(entryLT, LEX_ID, IT::IsId(idtable, word[i]), line);
-				LT::Add(lextable, entryLT);
-			}
-			else if (FST::execute(FST::FST(word[i], FST_SCPY))) {
-				if (int idx = IT::IsId(idtable, word[i]) == TI_NULLIDX) {
-					entryIT.idtype = IT::F;
-					entryIT.iddatatype = IT::STR;
-					entryIT.idxFirstLE = indexLex;
-					strcpy(entryIT.id, word[i]);
-					IT::Add(idtable, entryIT);
-					entryIT = {};
-				}
-
-				LT::Entry entryLT = WriteEntry(entryLT, LEX_ID, IT::IsId(idtable, word[i]), line);
-				LT::Add(lextable, entryLT);
-			}
 			else if ((FST::execute(FST::FST(word[i], FST_POW)) || FST::execute(FST::FST(word[i], FST_RAND)))) {
 				if (int idx = IT::IsId(idtable, word[i]) == TI_NULLIDX) {
 					entryIT.idtype = IT::F;

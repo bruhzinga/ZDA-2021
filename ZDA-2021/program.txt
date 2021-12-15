@@ -1,16 +1,11 @@
-
+procedure f(int b)
+{
+write b;
+}
 
 main
 {
-   let int i = 5;
-   i = mpow(i, 3);
-   write '5^3 = ';
-   writeln i;
-   write 'Случайное число: ';
-   let int r = mrand(1, 5);
-   writeln r;
-   let string str = '1234567h#jknf';
-  
-   write ' строка: ';
-   write str;
+let int i =0;
+f(i);
+
 }

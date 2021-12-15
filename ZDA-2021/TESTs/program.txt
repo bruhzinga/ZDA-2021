@@ -1,0 +1,52 @@
+main
+{
+let int i = N128;
+repeat(i < 100)
+{
+	where(i ~ N20)
+	{
+	writeln 'special message';
+	}
+	
+	i=i+1;
+	
+	write '×èñëî  = ';
+	writeln i;
+	where(i ~ 20)
+	{
+	writeln 'special message';
+	}
+	
+	
+}
+
+
+
+
+writeln 'i';
+
+i=1;
+repeat(i < 100)
+{
+	where(i ~ N20)
+	{
+	writeln 'special message';
+	}
+	
+	i=i+1;
+	
+	write '×èñëî  = ';
+	writeln i;
+	where(i ~ 20)
+	{
+	writeln 'special message';
+	}
+	
+	
+}
+
+}
+
+
+
+
