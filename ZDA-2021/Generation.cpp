@@ -220,7 +220,7 @@ namespace Gen
 					}
 				}
 
-				out << "\tcall " << idT.table[lexT.table[i - countParm - 1].idxTI].id << "\n";
+				out << "\tcall " << idT.table[lexT.table[i].idxTI].id << "\n";
 				break;
 
 			case LEX_RET:
@@ -267,16 +267,19 @@ namespace Gen
 						flag_else = false;
 					}
 					out << "m" << num_of_points++ << ":\n";
+					break;
 				}
 				if (flag_else) {
 					flag_else = false;
 					out << "e" << num_of_ends++ << ":\n";
+					break;
 				}
 				if (flag_cycle) {
 					out << cycle_code << "cyclenext" << num_of_cycles << ":\n";
 					cycle_code.clear();
 					num_of_cycles++;
 					flag_cycle = false;
+					break;
 				}
 				break;
 
