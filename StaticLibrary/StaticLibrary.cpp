@@ -1,9 +1,9 @@
-#
-<iostream>
+#include <iostream>
 #include <Windows.h>
 #pragma warning(disable: 4996)
 
-extern "C" {
+extern "C"
+{
 	void BREAKL() {
 		std::cout << std::endl;
 	}
@@ -18,7 +18,8 @@ extern "C" {
 		std::cout << a;
 	}
 
-	void OutputStr(char* ptr) {
+	void OutputStr(char* ptr)
+	{
 		SetConsoleCP(1251);
 		SetConsoleOutputCP(1251);
 		if (ptr == nullptr) {
@@ -63,5 +64,14 @@ extern "C" {
 			throw;
 		}
 		return a * b;
+	}
+	int minus(int b, int a)
+	{
+		if ((a - b) > 127 || (a - b) < -128)
+		{
+			std::cout << "Int out of range";
+			throw;
+		}
+		return (a - b);
 	}
 }
