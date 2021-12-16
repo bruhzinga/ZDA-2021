@@ -1,13 +1,14 @@
-void  f(int i) 
+int function f(int i) 
 {
-	write i;
+	ret 1;
 }
+
 int function f2(int i) 
-{		
+{
 	ret 2;
 }
 
 main
 {
-	f(20);	
+write 's';
 }
