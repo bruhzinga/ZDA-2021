@@ -53,12 +53,9 @@
 	FST::NODE(1, FST::RELATION('d', 4)),\
 	FST::NODE()
 
-#define FST_WHERE 6,	\
-	FST::NODE(1, FST::RELATION('w', 1)),\
-	FST::NODE(1, FST::RELATION('h', 2)),\
-	FST::NODE(1, FST::RELATION('e', 3)),\
-	FST::NODE(1, FST::RELATION('r', 4)),\
-	FST::NODE(1, FST::RELATION('e', 5)),\
+#define FST_IF 3,	\
+	FST::NODE(1, FST::RELATION('i', 1)),\
+	FST::NODE(1, FST::RELATION('f', 2)),\
 	FST::NODE()
 
 #define FST_ELSE 5,	\

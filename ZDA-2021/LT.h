@@ -28,7 +28,7 @@
 #define LEX_EQUAL		'='
 #define LEX_WHILE		'u'
 #define LEX_VOID	    'p'
-#define LEX_WHERE		'w'
+#define LEX_IF			'w'
 #define LEX_ELSE		'!'
 #define LEX_WRITELN		'b'
 

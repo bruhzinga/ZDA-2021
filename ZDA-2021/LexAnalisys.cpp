@@ -125,8 +125,8 @@ namespace Lex {
 				LT::Add(lextable, entryLT);
 				is_cycle++;
 			}
-			else if (FST::execute(FST::FST(word[i], FST_WHERE))) {
-				LT::Entry entryLT = WriteEntry(entryLT, LEX_WHERE, LT_TI_NULLIDX, line);
+			else if (FST::execute(FST::FST(word[i], FST_IF))) {
+				LT::Entry entryLT = WriteEntry(entryLT, LEX_IF, LT_TI_NULLIDX, line);
 				LT::Add(lextable, entryLT);
 				is_cycle++;
 			}

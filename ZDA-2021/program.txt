@@ -2,7 +2,7 @@ void f(int i)
 {
 while(i < 100)
 {
-	where(i ~ N20)
+	if(i ~ N20)
 	{
 	writeln 'special message';
 	}
@@ -11,7 +11,7 @@ while(i < 100)
 	
 	write 'Число  = ';
 	writeln i;
-	where(i ~ 20)
+	if(i ~ 20)
 	{
 	writeln 'special message';
 	}

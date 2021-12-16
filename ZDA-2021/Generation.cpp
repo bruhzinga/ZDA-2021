@@ -280,7 +280,7 @@ namespace Gen
 				}
 				break;
 
-			case LEX_WHERE:
+			case LEX_IF:
 				flag_if = true;
 				break;
 
