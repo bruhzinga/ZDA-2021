@@ -1,52 +1,26 @@
+procedure f(int i)
+{
+repeat(i < 100)
+{
+	where(i ~ N20)
+	{
+	writeln 'special message';
+	}
+	
+	i=i+1;
+	
+	write '—исло  = ';
+	writeln i;
+	where(i ~ 20)
+	{
+	writeln 'special message';
+	}
+}
+}
+
 main
 {
-let int i = N128;
-repeat(i < 100)
-{
-	where(i ~ N20)
-	{
-	writeln 'special message';
-	}
-	
-	i=i+1;
-	
-	write 'Число  = ';
-	writeln i;
-	where(i ~ 20)
-	{
-	writeln 'special message';
-	}
-	
-	
-}
-
-
-
-
-writeln 'i';
-
-i=1;
-repeat(i < 100)
-{
-	where(i ~ N20)
-	{
-	writeln 'special message';
-	}
-	
-	i=i+1;
-	
-	write 'Число  = ';
-	writeln i;
-	where(i ~ 20)
-	{
-	writeln 'special message';
-	}
-	
-	
-}
+let int i =N127;
+f(i);
 
 }
-
-
-
-

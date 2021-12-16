@@ -1,11 +1,27 @@
-procedure f(int b)
+procedure f(int i)
 {
-write b;
+repeat(i < 100)
+{
+	where(i ~ N20)
+	{
+	writeln 'special message';
+	}
+	
+	
+	where(i ~ 20)
+	{
+	writeln 'special message';
+	}
+	i=i+1;
+	
+	write 'Число  = ';
+	writeln i;
+}
 }
 
 main
 {
-let int i =0;
+let int i =N127;
 f(i);
 
 }
