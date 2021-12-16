@@ -88,8 +88,8 @@ namespace Lex {
 				LT::Add(lextable, entryLT);
 				findFunc = true;
 			}
-			else if (FST::execute(FST::FST(word[i], FST_PROCEDURE))) {
-				LT::Entry entryLT = WriteEntry(entryLT, LEX_PROCEDURE, LT_TI_NULLIDX, line);
+			else if (FST::execute(FST::FST(word[i], FST_VOID))) {
+				LT::Entry entryLT = WriteEntry(entryLT, LEX_VOID, LT_TI_NULLIDX, line);
 				LT::Add(lextable, entryLT);
 				findFunc = true;
 				findProc = true;
@@ -120,8 +120,8 @@ namespace Lex {
 				findMain = true;
 				mainCounter++;
 			}
-			else if (FST::execute(FST::FST(word[i], FST_REPEAT))) {
-				LT::Entry entryLT = WriteEntry(entryLT, LEX_REPEAT, LT_TI_NULLIDX, line);
+			else if (FST::execute(FST::FST(word[i], FST_WHILE))) {
+				LT::Entry entryLT = WriteEntry(entryLT, LEX_WHILE, LT_TI_NULLIDX, line);
 				LT::Add(lextable, entryLT);
 				is_cycle++;
 			}
@@ -238,7 +238,7 @@ namespace Lex {
 
 				if (value > 127 || value < -128)
 				{
-					throw ERROR_THROW_IN(315, line, position);
+					throw ERROR_THROW_IN(206, line, position);
 				}
 
 				for (int k = 0; k < idtable.size; k++) {
@@ -280,7 +280,7 @@ namespace Lex {
 				else value = strtol(numBuf + 2, NULL, 2);
 				if (value > 127 || value < -128)
 				{
-					throw ERROR_THROW_IN(315, line, position);
+					throw ERROR_THROW_IN(206, line, position);
 				}
 
 				for (int k = 0; k < idtable.size; k++) {
@@ -317,7 +317,7 @@ namespace Lex {
 				int value = strtol(numBuf + 2, NULL, 8);
 				if (value > 127 || value < -128)
 				{
-					throw ERROR_THROW_IN(315, line, position);
+					throw ERROR_THROW_IN(206, line, position);
 				}
 
 				for (int k = 0; k < idtable.size; k++) {

@@ -32,12 +32,9 @@ namespace Gen
 		out << "EXTRN OutputStrLn: proc\n";
 		out << "EXTRN sum: proc\n";
 		out << "EXTRN multip: proc\n";
-		//TO DO
-		// I REMOVED LIBS SO I NEED TO  INCLUDE SHIT
-
 		out << "EXTRN mpow: proc\n";
 		out << "EXTRN mrand: proc\n";
-
+		out << "EXTRN minus: proc\n";
 		out << "\n.stack 4096\n\n";
 	}
 
@@ -97,7 +94,7 @@ namespace Gen
 		out << "\n.code\n\n";
 		for (int i = 0; i < lexT.size; i++) {
 			switch (lexT.table[i].lexema) {
-			case LEX_PROCEDURE:
+			case LEX_VOID:
 			case LEX_FUNCTION:
 				while (lexT.table[i].lexema != LEX_RIGHTTHESIS) {
 					if (lexT.table[i].lexema == LEX_ID && idT.table[lexT.table[i].idxTI].idtype == IT::F) {
@@ -172,8 +169,8 @@ namespace Gen
 							out << "\tcall sum\n\tpush eax\n";
 							break;
 						case LT::OMINUS:
-							out << "\tpop ebx\n\tpop eax\n";
-							out << "\tsub eax, ebx\n\tpush eax\n";
+							/*	out << "\tpop ebx\n\tpop eax\n";*/
+							out << "\tcall minus\n\tpush eax\n";
 							break;
 						case LT::ODIV:
 							out << "\tpop ebx\n\tpop eax\n";
@@ -287,7 +284,7 @@ namespace Gen
 				flag_if = true;
 				break;
 
-			case LEX_REPEAT:
+			case LEX_WHILE:
 				flag_cycle = true;
 				flag_condition = true;
 				break;

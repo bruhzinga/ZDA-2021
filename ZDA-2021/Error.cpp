@@ -26,7 +26,8 @@ namespace Error {
 		ERROR_ENTRY(203, "[ LEXICAL ] The size of the identifier table has been exceeded"),
 		ERROR_ENTRY(204, "[ LEXICAL ] ID table overflow"),
 		ERROR_ENTRY(205, "[ LEXICAL ] Unknown character sequence"),
-		ERROR_ENTRY_NODEF(206), ERROR_ENTRY_NODEF(207), ERROR_ENTRY_NODEF(208), ERROR_ENTRY_NODEF(209),
+		ERROR_ENTRY(206, "[ LEXICAL ] Int out of range"),
+		ERROR_ENTRY_NODEF(207), ERROR_ENTRY_NODEF(208), ERROR_ENTRY_NODEF(209),
 		ERROR_ENTRY_NODEF10(210), ERROR_ENTRY_NODEF10(220), ERROR_ENTRY_NODEF10(230), ERROR_ENTRY_NODEF10(240), ERROR_ENTRY_NODEF10(250),
 		ERROR_ENTRY_NODEF10(260), ERROR_ENTRY_NODEF10(270), ERROR_ENTRY_NODEF10(280), ERROR_ENTRY_NODEF10(290),
 		ERROR_ENTRY(300, "[ SEMANTIC ] There is a non-closed string literal"),
@@ -44,7 +45,7 @@ namespace Error {
 		ERROR_ENTRY(312, "[ SEMANTIC ] Data type mismatch"),
 		ERROR_ENTRY(313, "[ SEMANTIC ] Mismatch of open and closed parentheses in an expression"),
 		ERROR_ENTRY(314, "[ SEMANTIC ] The function returns the wrong data type"),
-		ERROR_ENTRY(315, "[ SEMANTIC ] Int out of range"),
+
 		ERROR_ENTRY_NODEF100(700), ERROR_ENTRY_NODEF100(800), ERROR_ENTRY_NODEF100(900)
 	};
 	ERROR geterror(int id) {

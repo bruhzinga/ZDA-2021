@@ -1,21 +1,20 @@
-procedure f(int i)
+void f(int i)
 {
-repeat(i < 100)
+while(i < 100)
 {
 	where(i ~ N20)
 	{
 	writeln 'special message';
 	}
 	
-	
-	where(i ~ 20)
-	{
-	writeln 'special message';
-	}
 	i=i+1;
 	
 	write 'Число  = ';
 	writeln i;
+	where(i ~ 20)
+	{
+	writeln 'special message';
+	}
 }
 }
 

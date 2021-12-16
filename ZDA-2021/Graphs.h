@@ -46,16 +46,11 @@
 	FST::NODE(1, FST::RELATION('t', 3)),\
 	FST::NODE()
 
-#define FST_PROCEDURE 10,	\
-	FST::NODE(1, FST::RELATION('p', 1)),\
-	FST::NODE(1, FST::RELATION('r', 2)),\
-	FST::NODE(1, FST::RELATION('o', 3)),\
-	FST::NODE(1, FST::RELATION('c', 4)),\
-	FST::NODE(1, FST::RELATION('e', 5)),\
-	FST::NODE(1, FST::RELATION('d', 6)),\
-	FST::NODE(1, FST::RELATION('u', 7)),\
-	FST::NODE(1, FST::RELATION('r', 8)),\
-	FST::NODE(1, FST::RELATION('e', 9)),\
+#define FST_VOID 5,	\
+	FST::NODE(1, FST::RELATION('v', 1)),\
+	FST::NODE(1, FST::RELATION('o', 2)),\
+	FST::NODE(1, FST::RELATION('i', 3)),\
+	FST::NODE(1, FST::RELATION('d', 4)),\
 	FST::NODE()
 
 #define FST_WHERE 6,	\
@@ -98,13 +93,12 @@
 	FST::NODE(1, FST::RELATION('n', 4)),\
 	FST::NODE()
 
-#define FST_REPEAT 7, \
-	FST::NODE(1, FST::RELATION('r', 1)),\
-	FST::NODE(1, FST::RELATION('e', 2)),\
-	FST::NODE(1, FST::RELATION('p', 3)),\
-	FST::NODE(1, FST::RELATION('e', 4)),\
-	FST::NODE(1, FST::RELATION('a', 5)),\
-	FST::NODE(1, FST::RELATION('t', 6)),\
+#define FST_WHILE 6, \
+	FST::NODE(1, FST::RELATION('w', 1)),\
+	FST::NODE(1, FST::RELATION('h', 2)),\
+	FST::NODE(1, FST::RELATION('i', 3)),\
+	FST::NODE(1, FST::RELATION('l', 4)),\
+	FST::NODE(1, FST::RELATION('e', 5)),\
 	FST::NODE()
 
 #define FST_ID 2,	\

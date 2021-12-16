@@ -14,6 +14,7 @@ EXTRN sum: proc
 EXTRN multip: proc
 EXTRN mpow: proc
 EXTRN mrand: proc
+EXTRN minus: proc
 
 .stack 4096
 
@@ -21,9 +22,9 @@ EXTRN mrand: proc
 	L1 SDWORD 100
 	L2 SDWORD -20
 	L3 BYTE "special message", 0
-	L4 SDWORD 20
-	L5 SDWORD 1
-	L6 BYTE "Число  = ", 0
+	L4 SDWORD 1
+	L5 BYTE "Число  = ", 0
+	L6 SDWORD 20
 	L7 SDWORD -127
 
 .data
@@ -47,8 +48,17 @@ m0:
 	push offset L3
 	call OutputStrLn
 m1:
+	push fi
+	push L4
+	call sum
+	push eax
+	pop fi
+	push offset L5
+	call OutputStr
+	push fi
+	call OutputIntLn
 	mov eax, fi
-	cmp eax, L4
+	cmp eax, L6
 	jz m2
 	jnz m3
 	je m3
@@ -56,15 +66,6 @@ m2:
 	push offset L3
 	call OutputStrLn
 m3:
-	push fi
-	push L5
-	call sum
-	push eax
-	pop fi
-	push offset L6
-	call OutputStr
-	push fi
-	call OutputIntLn
 	mov eax, fi
 	cmp eax, L1
 	jl cycle0
