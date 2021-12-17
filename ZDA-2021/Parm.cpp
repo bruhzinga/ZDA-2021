@@ -10,7 +10,7 @@ namespace Parm {
 			log_found = false;
 
 		for (int i = 1; i < argc; i++) {
-			if (wcslen(argv[i]) > PARM_MAX_SIZE) 
+			if (wcslen(argv[i]) > PARM_MAX_SIZE)
 				throw ERROR_THROW(104);
 
 			if (wcsstr(argv[i], PARM_IN)) {
@@ -28,13 +28,13 @@ namespace Parm {
 				log_found = true;
 			}
 
-			if (!_wcsnicmp(argv[i], PARM_ID, wcslen(PARM_ID)))
+			if (!_wcsnicmp(argv[i], PARM_ID_TABLE, wcslen(PARM_ID_TABLE)))
 				parm.id = true;
 			if (!_wcsnicmp(argv[i], PARM_LEX, wcslen(PARM_LEX)))
 				parm.lex = true;
 			if (!_wcsnicmp(argv[i], PARM_RULES, wcslen(PARM_RULES)))
 				parm.rules = true;
-			if (!_wcsnicmp(argv[i], PARM_TOKENS, wcslen(PARM_TOKENS)))
+			if (!_wcsnicmp(argv[i], PARM_LEXEM_TABLE, wcslen(PARM_LEXEM_TABLE)))
 				parm.tokens = true;
 		}
 
