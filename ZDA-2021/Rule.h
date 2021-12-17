@@ -6,7 +6,7 @@
 #define TS(n) GRB::Rule::Chain::T(n)
 #define ISNS(n) GRB::Rule::Chain::isN(n)
 #define LEX_TYPE 't'
-#define LEX_OPERAION 'v'
+#define LEX_OPERATION 'p'
 #define FUNCTION_PARAMETRS 'F'
 #define PARAMETRS_RESTRICTIONS 'P'
 #define BODY 'B'
@@ -58,35 +58,35 @@ namespace GRB {
 		Rule(
 			NS(INSTRUCTIONS), GRB_ERROR_SERIES + 6,
 			20,
-			Rule::Chain(5, TS(LEX_RET), TS(LEX_TYPE), TS(LEX_ID), TS(';'), NS(INSTRUCTIONS)),
-			Rule::Chain(7, TS(LEX_RET), TS(LEX_TYPE), TS(LEX_ID), TS('='), NS(EXPRESSION), TS(';'), NS(INSTRUCTIONS)),
+			Rule::Chain(5, TS(LEX_LET), TS(LEX_TYPE), TS(LEX_ID), TS(';'), NS(INSTRUCTIONS)),
+			Rule::Chain(7, TS(LEX_LET), TS(LEX_TYPE), TS(LEX_ID), TS('='), NS(EXPRESSION), TS(';'), NS(INSTRUCTIONS)),
 			Rule::Chain(5, TS(LEX_ID), TS('='), NS(EXPRESSION), TS(';'), NS(INSTRUCTIONS)),
 			Rule::Chain(8, TS(LEX_WHILE), TS('('), NS(CYCLE_AND_IF_PARAMETRS), TS(')'), TS('{'), NS(CYCLE_AND_IF_BODY), TS('}'), NS(INSTRUCTIONS)),
 			Rule::Chain(8, TS(LEX_IF), TS('('), NS(CYCLE_AND_IF_PARAMETRS), TS(')'), TS('{'), NS(CYCLE_AND_IF_BODY), TS('}'), NS(INSTRUCTIONS)),
 			Rule::Chain(12, TS(LEX_IF), TS('('), NS(CYCLE_AND_IF_PARAMETRS), TS(')'), TS('{'), NS(CYCLE_AND_IF_BODY), TS('}'), TS('!'), TS('{'), NS(CYCLE_AND_IF_BODY), TS('}'), NS(INSTRUCTIONS)),
 			Rule::Chain(4, TS(LEX_WRITE), NS(ID_OR_LITERAL), TS(';'), NS(INSTRUCTIONS)),
 			Rule::Chain(4, TS(LEX_WRITELN), NS(ID_OR_LITERAL), TS(';'), NS(INSTRUCTIONS)),
-			Rule::Chain(4, TS(LEX_RET), NS(EXPRESSION), TS(';'), NS(INSTRUCTIONS)),
+			Rule::Chain(4, TS(LEX_RET), NS(ID_OR_LITERAL), TS(';'), NS(INSTRUCTIONS)),
 			Rule::Chain(4, TS(LEX_ID), NS(FUNC_CALL), TS(';'), NS(INSTRUCTIONS)),
 
-			Rule::Chain(4, TS(LEX_RET), TS(LEX_TYPE), TS(LEX_ID), TS(';')),
-			Rule::Chain(6, TS(LEX_RET), TS(LEX_TYPE), TS(LEX_ID), TS('='), NS(EXPRESSION), TS(';')),
+			Rule::Chain(4, TS(LEX_LET), TS(LEX_TYPE), TS(LEX_ID), TS(';')),
+			Rule::Chain(6, TS(LEX_LET), TS(LEX_TYPE), TS(LEX_ID), TS('='), NS(EXPRESSION), TS(';')),
 			Rule::Chain(4, TS(LEX_ID), TS('='), NS(EXPRESSION), TS(';')),
 			Rule::Chain(7, TS(LEX_WHILE), TS('('), NS(CYCLE_AND_IF_PARAMETRS), TS(')'), TS('{'), NS(CYCLE_AND_IF_BODY), TS('}')),
 			Rule::Chain(7, TS(LEX_IF), TS('('), NS(CYCLE_AND_IF_PARAMETRS), TS(')'), TS('{'), NS(CYCLE_AND_IF_BODY), TS('}')),
 			Rule::Chain(11, TS(LEX_IF), TS('('), NS(CYCLE_AND_IF_PARAMETRS), TS(')'), TS('{'), NS(CYCLE_AND_IF_BODY), TS('}'), TS('!'), TS('{'), NS(CYCLE_AND_IF_BODY), TS('}')),
 			Rule::Chain(3, TS(LEX_WRITE), NS(ID_OR_LITERAL), TS(';')),
 			Rule::Chain(3, TS(LEX_WRITELN), NS(ID_OR_LITERAL), TS(';')),
-			Rule::Chain(3, TS(LEX_RET), NS(EXPRESSION), TS(';')),
+			Rule::Chain(3, TS(LEX_RET), NS(ID_OR_LITERAL), TS(';')),
 			Rule::Chain(3, TS(LEX_ID), NS(FUNC_CALL), TS(';'))
 		),
 		Rule(
 			NS(CYCLE_AND_IF_PARAMETRS), GRB_ERROR_SERIES + 7,
 			4,
 			Rule::Chain(1, TS(LEX_ID)),
-			Rule::Chain(3, TS(LEX_ID), TS(LEX_OPERAION), TS(LEX_ID)),
-			Rule::Chain(3, TS(LEX_ID), TS(LEX_OPERAION), TS(LEX_LITERAL)),
-			Rule::Chain(3, TS(LEX_LITERAL), TS(LEX_OPERAION), TS(LEX_ID))
+			Rule::Chain(3, TS(LEX_ID), TS(LEX_OPERATION), TS(LEX_ID)),
+			Rule::Chain(3, TS(LEX_ID), TS(LEX_OPERATION), TS(LEX_LITERAL)),
+			Rule::Chain(3, TS(LEX_LITERAL), TS(LEX_OPERATION), TS(LEX_ID))
 		),
 		Rule(
 			NS(FUNC_CALL), GRB_ERROR_SERIES + 8,
@@ -118,28 +118,30 @@ namespace GRB {
 		Rule(
 			NS('M'), GRB_ERROR_SERIES + 11,
 			2,
-			Rule::Chain(2, TS(LEX_OPERAION), NS(EXPRESSION)),
-			Rule::Chain(3, TS(LEX_OPERAION), NS(EXPRESSION), NS('M'))
+			Rule::Chain(2, TS(LEX_OPERATION), NS(EXPRESSION)),
+			Rule::Chain(3, TS(LEX_OPERATION), NS(EXPRESSION), NS('M'))
 		),
 		Rule(
 			NS(CYCLE_AND_IF_BODY), GRB_ERROR_SERIES + 12,
 			15,
-			Rule::Chain(5, TS(LEX_RET), TS(LEX_TYPE), TS(LEX_ID), TS(';'), NS(INSTRUCTIONS)),
-			Rule::Chain(7, TS(LEX_RET), TS(LEX_TYPE), TS(LEX_ID), TS('='), NS(EXPRESSION), TS(';'), NS(INSTRUCTIONS)),
-			Rule::Chain(5, TS(LEX_ID), TS('='), NS(EXPRESSION), TS(';'), NS(INSTRUCTIONS)),
-			Rule::Chain(4, TS(LEX_WRITE), NS(ID_OR_LITERAL), TS(';'), NS(INSTRUCTIONS)),
-			Rule::Chain(4, TS(LEX_WRITELN), NS(EXPRESSION), TS(';'), NS(INSTRUCTIONS)),
-			Rule::Chain(4, TS(LEX_RET), NS(EXPRESSION), TS(';'), NS(INSTRUCTIONS)),
-			Rule::Chain(4, TS(LEX_ID), NS(FUNC_CALL), TS(';'), NS(INSTRUCTIONS)),
+			Rule::Chain(5, TS(LEX_LET), TS(LEX_TYPE), TS(LEX_ID), TS(';'), NS(CYCLE_AND_IF_BODY)),
+			Rule::Chain(7, TS(LEX_LET), TS(LEX_TYPE), TS(LEX_ID), TS('='), NS(CYCLE_AND_IF_BODY), TS(';'), NS(CYCLE_AND_IF_BODY)),
+			Rule::Chain(5, TS(LEX_ID), TS('='), NS(EXPRESSION), TS(';'), NS(CYCLE_AND_IF_BODY)),
+			Rule::Chain(4, TS(LEX_WRITE), NS(ID_OR_LITERAL), TS(';'), NS(CYCLE_AND_IF_BODY)),
+			Rule::Chain(4, TS(LEX_WRITELN), NS(EXPRESSION), TS(';'), NS(CYCLE_AND_IF_BODY)),
+			Rule::Chain(4, TS(LEX_RET), NS(ID_OR_LITERAL), TS(';'), NS(CYCLE_AND_IF_BODY)),
+			Rule::Chain(4, TS(LEX_ID), NS(FUNC_CALL), TS(';'), NS(CYCLE_AND_IF_BODY)),
 
-			Rule::Chain(4, TS(LEX_RET), TS(LEX_TYPE), TS(LEX_ID), TS(';')),
-			Rule::Chain(6, TS(LEX_RET), TS(LEX_TYPE), TS(LEX_ID), TS('='), NS(EXPRESSION), TS(';')),
-			Rule::Chain(4, TS(LEX_ID), TS('='), NS(EXPRESSION), TS(';')),
+			Rule::Chain(4, TS(LEX_LET), TS(LEX_TYPE), TS(LEX_ID), TS(';')),
+			Rule::Chain(6, TS(LEX_LET), TS(LEX_TYPE), TS(LEX_ID), TS('='), NS(CYCLE_AND_IF_BODY), TS(';')),
+			Rule::Chain(4, TS(LEX_ID), TS('='), NS(CYCLE_AND_IF_BODY), TS(';')),
 			Rule::Chain(3, TS(LEX_WRITE), NS(ID_OR_LITERAL), TS(';')),
 			Rule::Chain(3, TS(LEX_WRITELN), NS(ID_OR_LITERAL), TS(';')),
-			Rule::Chain(3, TS(LEX_RET), NS(EXPRESSION), TS(';')),
+			Rule::Chain(3, TS(LEX_RET), NS(ID_OR_LITERAL), TS(';')),
 			Rule::Chain(3, TS(LEX_ID), NS(FUNC_CALL), TS(';')),
-			Rule::Chain(8, TS(LEX_IF), TS('('), NS(CYCLE_AND_IF_PARAMETRS), TS(')'), TS('{'), NS(CYCLE_AND_IF_BODY), TS('}'), NS(INSTRUCTIONS))
+			Rule::Chain(8, TS(LEX_IF), TS('('), NS(CYCLE_AND_IF_PARAMETRS), TS(')'), TS('{'), NS(CYCLE_AND_IF_BODY), TS('}'), NS(CYCLE_AND_IF_BODY))
+
 		)
+
 	);
 }

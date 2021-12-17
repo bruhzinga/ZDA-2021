@@ -1,13 +1,25 @@
-void  f(int i) 
+int function f2(int b)
 {
-	write i;
+
+ret b;
 }
-int function f2(int i) 
-{		
-	ret 2;
+
+int function f(int i)
+{
+let int b = f2(20);
+ret b;
 }
+
+
 
 main
 {
-	f(20);	
+	
+	let int b = f(10);
+	write b;
+	let int i = 25;
+	b = (i+25)/2;
+	write b;
+	
+	
 }
