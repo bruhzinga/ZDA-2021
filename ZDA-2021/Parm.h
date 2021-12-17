@@ -3,10 +3,10 @@
 #define PARM_OUT	L"-out:"
 #define PARM_LOG	L"-log:"
 
-#define PARM_LEX	L"-lex"
-#define PARM_ID		L"-id"
-#define PARM_RULES	L"-rules"
-#define PARM_TOKENS	L"-tokens"
+#define PARM_LEX			L"-lex"
+#define PARM_ID_TABLE		L"-TI"
+#define PARM_RULES			L"-rules"
+#define PARM_LEXEM_TABLE	L"-TL"
 
 #define PARM_MAX_SIZE 300
 #define PARM_OUT_DEFAULT_EXT L".out.asm"
