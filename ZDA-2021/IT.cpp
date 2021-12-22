@@ -50,7 +50,7 @@ namespace IT {
 
 			if (idtable.table[i].idtype == IT::OP) stream_out << setw(10) << left << "-" << " | ";
 			else {
-				switch (idtable.table[i].iddatatype) {
+				switch (idtable.table[i].idDataType) {
 				case INT:
 					stream_out << setw(10) << left;
 					stream_out << "int" << " | ";
@@ -82,11 +82,11 @@ namespace IT {
 			}
 			stream_out << setw(11) << left << idtable.table[i].idxFirstLE << " | ";
 
-			if (idtable.table[i].iddatatype == INT && (idtable.table[i].idtype == V || idtable.table[i].idtype == L))
+			if (idtable.table[i].idDataType == INT && (idtable.table[i].idtype == V || idtable.table[i].idtype == L))
 				stream_out << setw(18) << left << idtable.table[i].value.vint;
-			else if (idtable.table[i].iddatatype == STR && (idtable.table[i].idtype == V || idtable.table[i].idtype == L))
+			else if (idtable.table[i].idDataType == STR && (idtable.table[i].idtype == V || idtable.table[i].idtype == L))
 				stream_out << "[" << idtable.table[i].value.vstr.len << "]\"" << idtable.table[i].value.vstr.str << "\"";
-			else if (idtable.table[i].iddatatype == BOOL && (idtable.table[i].idtype == V || idtable.table[i].idtype == L))
+			else if (idtable.table[i].idDataType == BOOL && (idtable.table[i].idtype == V || idtable.table[i].idtype == L))
 				stream_out << setw(18) << left << (idtable.table[i].value.vint == 0 ? "false" : "true");
 			else stream_out << "-";
 			stream_out << endl;

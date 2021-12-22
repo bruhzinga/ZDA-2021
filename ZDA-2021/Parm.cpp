@@ -27,7 +27,8 @@ namespace Parm {
 				wcscpy_s(parm.log, argv[i] + wcslen(PARM_LOG));
 				log_found = true;
 			}
-
+			//The __wcsnicmp() function compares up to count characters of string1 and string2 without sensitivity to case.
+			//All alphabetic wide characters in string1 and string2 are converted to lowercase before comparison.
 			if (!_wcsnicmp(argv[i], PARM_ID_TABLE, wcslen(PARM_ID_TABLE)))
 				parm.id = true;
 			if (!_wcsnicmp(argv[i], PARM_LEX, wcslen(PARM_LEX)))

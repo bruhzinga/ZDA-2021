@@ -110,7 +110,7 @@ namespace Polish {
 			if (lex.lextable.table[i].lexema == '=') {
 				polishNotation(i + 1, lex);
 			}
-			else if (lex.lextable.table[i].lexema == LEX_ID && lex.idtable.table[lex.lextable.table[i].idxTI].iddatatype == IT::PROC &&
+			else if (lex.lextable.table[i].lexema == LEX_ID && lex.idtable.table[lex.lextable.table[i].idxTI].idDataType == IT::PROC &&
 				lex.lextable.table[i - 1].lexema != LEX_VOID)
 			{
 				polishNotation(i, lex);

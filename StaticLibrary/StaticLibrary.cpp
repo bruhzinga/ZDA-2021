@@ -31,6 +31,11 @@ extern "C"
 	}
 
 	void OutputIntLn(int a) {
+		if (a > 127 || a < -128)
+		{
+			std::cout << "Int out of range";
+			throw;
+		}
 		std::cout << a << std::endl;
 	}
 

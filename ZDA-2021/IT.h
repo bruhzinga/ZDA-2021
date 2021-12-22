@@ -15,7 +15,7 @@ namespace IT {
 		char visibility[ID_MAXSIZE];
 		char id[ID_MAXSIZE];
 
-		IDDATATYPE iddatatype;
+		IDDATATYPE idDataType;
 		IDTYPE idtype;
 		int countOfPar = 0;
 		union {

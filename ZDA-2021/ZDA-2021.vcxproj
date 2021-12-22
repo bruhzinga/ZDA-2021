@@ -152,7 +152,6 @@
     <ClCompile Include="ZDA2021.cpp" />
     <ClCompile Include="LT.cpp" />
     <ClCompile Include="MFST.cpp" />
-    <ClCompile Include="Out.cpp" />
     <ClCompile Include="Parm.cpp" />
     <ClCompile Include="Polish.cpp" />
     <ClCompile Include="SemAnalysis.cpp" />

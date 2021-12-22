@@ -71,7 +71,7 @@ namespace In
 				in.ignor++;
 				position++;
 				break;
-			case in.F: 
+			case in.F:
 				throw ERROR_THROW_IN(200, in.lines + 1, position);
 			default:
 				in.text[i] = in.code[(int)letter];

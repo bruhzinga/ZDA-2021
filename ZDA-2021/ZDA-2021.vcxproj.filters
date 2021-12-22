@@ -51,9 +51,6 @@
     <ClCompile Include="MFST.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Out.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Parm.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
