@@ -27,13 +27,11 @@ EXTRN minus: proc
 	L6 BYTE "special message", 0
 	L7 BYTE "◊ËÒÎÓ  = ", 0
 	L8 SDWORD 20
-	L9 SDWORD 1
-	L10 SDWORD 0
-	L11 SDWORD 5
-	L12 BYTE "‘¿ “Œ–»¿À 5 = ", 0
-	L13 SDWORD 2
-	L14 SDWORD 3
-	L15 SDWORD -127
+	L9 SDWORD 5
+	L10 BYTE "‘¿ “Œ–»¿À 5 = ", 0
+	L11 SDWORD 2
+	L12 SDWORD 3
+	L13 SDWORD -127
 
 .data
 	buffer BYTE 256 dup(0)
@@ -42,6 +40,7 @@ EXTRN minus: proc
 	libtesti SDWORD 0
 	maini SDWORD 0
 	mainmessage DWORD ?
+	maintest SDWORD 0
 
 .code
 
@@ -158,46 +157,53 @@ cyclenext1:
 	ret
 allnumbers ENDP
 
-poz PROC pozi : SDWORD
-	mov eax, pozi
-	cmp eax, L1
-	jg m6
-	jl m7
-	je m7
-m6:
-	push 1
+functest PROC functesti : SDWORD
+	push functesti
 	jmp local1
-	jmp e1
-m7:
-	push 0
-	jmp local1
-e1:
 local1:
 	pop eax
 	ret
-poz ENDP
+functest ENDP
 
 main PROC
-	push L11
+	push L9
 	pop edx
-	push L11
+	push L9
 	call factorial
 	push eax
 	pop maini
-	push offset L12
+	push offset L10
 	pop mainmessage
 	push mainmessage
 	call OutputStr
 	push maini
 	call OutputIntLn
-	push L14
-	push L13
+	push L12
+	push L11
 	call libtest
-	push L13
+	push L11
 	push L2
 	call libtest
-	push L15
+	push L13
 	call allnumbers
+	push L2
+	pop edx
+	push L2
+	call functest
+	push eax
+	push L8
+	pop edx
+	push L8
+	call functest
+	push eax
+	call sum
+	push eax
+	push L8
+	call sum
+	push eax
+	pop maintest
+	push maintest
+	call OutputIntLn
 	call ExitProcess
 main ENDP
 end main
